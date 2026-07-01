@@ -19,6 +19,19 @@
 import pandas as pd
 df = pd.read_csv('netflix_titles.csv')
 df.head()
+
+
+# Remove leading/trailing spaces
+df['date_added'] = df['date_added'].str.strip()
+
+# Convert to datetime
+df['date_added'] = pd.to_datetime(df['date_added'])
+df['release_year'] = pd.to_datetime(df['release_year'])
+
+
+df.info()
+
+
 # Total Movies
 totalmovies = df['show_id'].nunique()
 
@@ -48,11 +61,8 @@ latestrelease = df['release_year'].max()
 moviesVsTvshows = df['type'].value_counts()
 
 # Content Added Per Year
-df['year_added'] = (
-    pd.to_datetime(df['date_added'].str.strip())
-      .dt.year
-)
-content_added_per_year = df.groupby('year_added').size()
+# df['year_added'] = df['date_added'].dt.year
+content_added_per_year = df.groupby(df['date_added'].dt.year).size()
 
 
 # dashboard and KPIs
