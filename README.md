@@ -2,3 +2,5 @@
 
 ## 1. Retail sales analysis 
 Retail sales analysis using Python, Pandas, and Matplotlib. Solves real-world business case studies through KPI analysis, customer segmentation, and interactive data visualizations.
+
+## 2.
